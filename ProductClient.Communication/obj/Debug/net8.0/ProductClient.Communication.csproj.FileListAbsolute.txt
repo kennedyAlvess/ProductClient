@@ -1,0 +1,12 @@
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\bin\Debug\net8.0\ProductClient.Communication.deps.json
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\bin\Debug\net8.0\ProductClient.Communication.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\bin\Debug\net8.0\ProductClient.Communication.pdb
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.GeneratedMSBuildEditorConfig.editorconfig
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.AssemblyInfoInputs.cache
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.AssemblyInfo.cs
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.csproj.CoreCompileInputs.cache
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.sourcelink.json
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\refint\ProductClient.Communication.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ProductClient.Communication.pdb
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Communication\obj\Debug\net8.0\ref\ProductClient.Communication.dll

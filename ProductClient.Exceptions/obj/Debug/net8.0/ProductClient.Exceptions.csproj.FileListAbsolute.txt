@@ -1,0 +1,12 @@
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\bin\Debug\net8.0\ProductClient.Exceptions.deps.json
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\bin\Debug\net8.0\ProductClient.Exceptions.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\bin\Debug\net8.0\ProductClient.Exceptions.pdb
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.GeneratedMSBuildEditorConfig.editorconfig
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.AssemblyInfoInputs.cache
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.AssemblyInfo.cs
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.csproj.CoreCompileInputs.cache
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.sourcelink.json
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\refint\ProductClient.Exceptions.dll
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ProductClient.Exceptions.pdb
+C:\GIT\Estudos\Rocketseat\Fundamentos\ProductClient\ProductClient.Exceptions\obj\Debug\net8.0\ref\ProductClient.Exceptions.dll
