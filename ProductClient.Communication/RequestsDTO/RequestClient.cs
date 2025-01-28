@@ -1,4 +1,6 @@
-﻿namespace ProductClient.Communication.RequestsDTO;
+﻿using System;
+
+namespace ProductClient.Communication.RequestsDTO;
 
 public class RequestClient
 {

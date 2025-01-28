@@ -1,4 +1,6 @@
-﻿namespace ProductClient.Communication.ResponseDTO;
+﻿using System.Collections.Generic;
+
+namespace ProductClient.Communication.ResponseDTO;
 
 public class ReponseErros
 {
