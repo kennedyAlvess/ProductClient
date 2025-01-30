@@ -14,7 +14,7 @@ public class CadastrarClientService
         if (!result.IsValid)
         {
             var errors = result.Errors.Select(erros => erros.ErrorMessage).ToList();
-            throw new ValidationException(errors);
+            throw new ArgumentException();
         }
         return new ResponseClient();
     }

@@ -1,6 +1,8 @@
-﻿namespace ProductCliente.Exceptions.ExceptionsBase;
+﻿using System.Net;
 
-public class ValidationException : ProductClientException
+namespace ProductCliente.Exceptions.ExceptionsBase;
+
+public class ValidationException : ExceptionBase
 {
     private readonly List<string> _errors;
     
@@ -10,4 +12,6 @@ public class ValidationException : ProductClientException
     }
 
     public override List<string> GetErrorsMessages() => _errors;
+
+    public override HttpStatusCode GetStatusCode() => HttpStatusCode.BadRequest;
 }

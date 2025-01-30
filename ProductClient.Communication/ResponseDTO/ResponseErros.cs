@@ -1,16 +1,15 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace ProductClient.Communication.ResponseDTO;
 
-public class ReponseErros
+public class ResponseErros
 {
     public List<string> Erros { get; private set; }
 
-    public ReponseErros(string error)
+    public ResponseErros(string error)
     {
         Erros = [error];
     }
-    public ReponseErros(List<string> erros)
+    public ResponseErros(List<string> erros)
     {
         Erros = erros;
     }

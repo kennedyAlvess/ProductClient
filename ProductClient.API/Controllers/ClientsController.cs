@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using ProductClient.API.Services.Client;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
-using ProductCliente.Exceptions.ExceptionsBase;
 
 // ReSharper disable All
 
@@ -26,22 +25,11 @@ namespace ProductClient.API.Controllers
 
         [HttpPost("CadastrarClient")]
         [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ReponseErros), StatusCodes.Status400BadRequest)]
         public IActionResult CadastrarClient([FromBody] RequestClient client)
         {
-            try
-            {
-                CadastrarClientService response = new();
-                return Created(string.Empty, response.Executar(client));
-            }
-            catch (ProductClientException ex)
-            {
-                return BadRequest(new ReponseErros(ex.GetErrorsMessages()));
-            }
-            catch
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ReponseErros("Erro desconhecido, entre em contato com o suporte técnico."));
-            }
+            CadastrarClientService response = new();
+            var result = response.Executar(client);
+            return Created(string.Empty, result);
         }
 
         [HttpPut("AtualizarClient/{id:long}")]
