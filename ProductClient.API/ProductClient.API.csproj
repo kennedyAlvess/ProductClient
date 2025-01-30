@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ProductClient.Communication\ProductClient.Communication.csproj" />
-      <ProjectReference Include="..\ProductCliente.Exceptions\ProductCliente.Exceptions.csproj" />
+      <ProjectReference Include="..\ProductClient.Exceptions\ProductClient.Exceptions.csproj" />
     </ItemGroup>
 
     <ItemGroup>

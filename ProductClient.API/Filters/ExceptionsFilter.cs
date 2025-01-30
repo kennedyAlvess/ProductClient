@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using ProductClient.Communication.ResponseDTO;
-using ProductCliente.Exceptions.ExceptionsBase;
+using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Filters
 {

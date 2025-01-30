@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace ProductCliente.Exceptions.ExceptionsBase;
+namespace ProductClient.Exceptions.ExceptionsBase;
 
 public class ValidationException : ExceptionBase
 {

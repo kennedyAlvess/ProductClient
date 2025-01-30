@@ -1,7 +1,7 @@
 ﻿using ProductClient.API.Validations;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
-using ProductCliente.Exceptions.ExceptionsBase;
+using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.Client;
 

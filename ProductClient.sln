@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductClient.API", "Produc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductClient.Communication", "ProductClient.Communication\ProductClient.Communication.csproj", "{1240F5AE-C660-4D45-BFAF-F4C2371515B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductCliente.Exceptions", "ProductCliente.Exceptions\ProductCliente.Exceptions.csproj", "{7A677E68-BCE1-48A5-A252-986DFC9D8266}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductClient.Exceptions", "ProductClient.Exceptions\ProductClient.Exceptions.csproj", "{7A677E68-BCE1-48A5-A252-986DFC9D8266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
