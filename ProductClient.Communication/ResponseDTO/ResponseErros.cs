@@ -1,5 +1,4 @@
-﻿
-namespace ProductClient.Communication.ResponseDTO;
+﻿namespace ProductClient.Communication.ResponseDTO;
 
 public class ResponseErros
 {
