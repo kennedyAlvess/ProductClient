@@ -11,6 +11,11 @@ namespace ProductClient.API.Controllers;
 [ApiController]
 public class ClientsController : ControllerBase
 {
+    private readonly ICadastrarClientService _cadastrarClientService;
+    public ClientsController(ICadastrarClientService cadastrarClientService)
+    {
+        _cadastrarClientService = cadastrarClientService;
+    }
     [HttpGet("ListarClients")]
     public IActionResult ListarClients()
     {
@@ -25,10 +30,10 @@ public class ClientsController : ControllerBase
 
     [HttpPost("CadastrarClient")]
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
-    public IActionResult CadastrarClient([FromBody] RequestClient client)
+    public async Task<IActionResult> CadastrarClient([FromBody] RequestClient client)
     {
-        CadastrarClientService response = new();
-        var result = response.Executar(client);
+
+        var result = await _cadastrarClientService.Executar(client);
         return Created(string.Empty, result);
     }
 

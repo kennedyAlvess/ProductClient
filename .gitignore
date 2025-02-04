@@ -89,3 +89,5 @@ fabric.properties
 /ProductClient.Communication/bin/
 /ProductClient.Exceptions/obj/
 /ProductClient.Exceptions/bin/
+obj/Infrastructure.EntityFrameworkCore.targets
+obj/ProductCliente.API.EntityFrameworkCore.targets
