@@ -2,8 +2,10 @@
 using ProductClient.API.Validations;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
+using ProductClient.Exceptions.ExceptionsBase;
+using ProductClient.API.Entities;
 
-namespace ProductClient.API.Services.Client;
+namespace ProductClient.API.Services.Clients;
 
 public interface ICadastrarClientService
 {
@@ -24,9 +26,23 @@ public class CadastrarClientService : ICadastrarClientService
         if (!result.IsValid)
         {
             var errors = result.Errors.Select(erros => erros.ErrorMessage).ToList();
-            throw new ArgumentException();
+            throw new ValidationException(errors);
         }
+        Client entity = new Client
+        {
+            Nome = client.Nome,
+            Email = client.Email,
+            DataNascimento = client.DataNascimento,
+            DataCadastro = DateTime.Now,
+            Cpf = client.Cpf
+        };
 
-        return await _clientRepository.Add(client);
+        await _clientRepository.Add(entity);
+
+        return new ResponseClient
+        {
+            Id = entity.Id,
+            Nome = entity.Nome
+        };
     }
 }

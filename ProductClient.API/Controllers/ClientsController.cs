@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ProductClient.API.Services.Client;
+using ProductClient.API.Services.Clients;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
 
@@ -32,7 +32,6 @@ public class ClientsController : ControllerBase
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
     public async Task<IActionResult> CadastrarClient([FromBody] RequestClient client)
     {
-
         var result = await _cadastrarClientService.Executar(client);
         return Created(string.Empty, result);
     }

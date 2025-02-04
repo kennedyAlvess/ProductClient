@@ -9,7 +9,7 @@ public class ExceptionsFilter : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        if (context.Exception is ValidationException exception)
+        if (context.Exception is ExceptionBase exception)
         {
             context.Result = new ObjectResult(exception.GetErrorsMessages());
             context.HttpContext.Response.StatusCode = (int)exception.GetStatusCode();

@@ -1,12 +1,10 @@
 using ProductClient.API.Entities;
-using ProductClient.Communication.RequestsDTO;
-using ProductClient.Communication.ResponseDTO;
 
 namespace ProductClient.API.Infrastructure.Repository
 {
     public interface IClientRepository
     {
-        public Task<ResponseClient> Add(RequestClient requestClient);
+        public Task<Client> Add(Client entity);
 
     }
     public class ClientRepository : IClientRepository
@@ -17,17 +15,11 @@ namespace ProductClient.API.Infrastructure.Repository
         {
             _context = context;
         }
-        public async Task<ResponseClient> Add(RequestClient requestClient)
+        public async Task<Client> Add(Client entity)
         {
-            Client entity = new Client(requestClient);
             await _context.Clients.AddAsync(entity);
             await _context.SaveChangesAsync();
-
-            return new ResponseClient
-            {
-                Id = entity.Id,
-                Nome = entity.Nome
-            };
+            return entity;
         }
     }
 }

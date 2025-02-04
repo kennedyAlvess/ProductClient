@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
-using ProductClient.Communication.RequestsDTO;
 
 namespace ProductClient.API.Entities
 {
@@ -18,21 +17,9 @@ namespace ProductClient.API.Entities
         public DateOnly DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
         [Required]
-        public long UsuarioCadastro { get; set; }
-        [Required]
         [MaxLength(11)]
         public string Cpf { get; set; } = string.Empty;
         public int Idade { get; private set; }
         public ICollection<ClientProduct> ClientProducts { get; set; } = [];
-
-        public Client(RequestClient client)
-        {
-            Nome = client.Nome;
-            Email = client.Email;
-            DataNascimento = client.DataNascimento;
-            UsuarioCadastro = client.UsuarioCadastro;
-            Cpf = client.Cpf;
-            DataCadastro = DateTime.Now;
-        }
     }
 }

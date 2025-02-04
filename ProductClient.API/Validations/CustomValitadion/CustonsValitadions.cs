@@ -4,13 +4,13 @@ namespace ProductClient.API.Validations.CustomValitadion;
 
 public static class CustonsValitadions
 {
-    public static IRuleBuilderOptionsConditions<T, DateTime> DataNascimentoValidation<T>(
-        this IRuleBuilder<T, DateTime> ruleBuilder
+    public static IRuleBuilderOptionsConditions<T, DateOnly> DataNascimentoValidation<T>(
+        this IRuleBuilder<T, DateOnly> ruleBuilder
     )
     {
         return ruleBuilder.Custom((dataNascimento, context) =>
         {
-            var today = DateTime.Today;
+            DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
             if (dataNascimento == default)
             {
@@ -21,7 +21,7 @@ public static class CustonsValitadions
             if (dataNascimento > today)
                 context.AddFailure("A data de nascimento não pode ser maior que a data atual.");
             
-            var idade = dataNascimento.Year - today.Year;
+            var idade = today.Year - dataNascimento.Year;
             if(idade < 18)
                 context.AddFailure("O cliente deve ser maior de 18 anos.");
         });

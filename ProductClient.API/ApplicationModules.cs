@@ -1,4 +1,4 @@
-using ProductClient.API.Services.Client;
+using ProductClient.API.Services.Clients;
 
 namespace ProductClient.API
 {
