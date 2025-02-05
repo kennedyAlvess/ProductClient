@@ -2,11 +2,11 @@
 
 namespace ProductClient.Exceptions.ExceptionsBase;
 
-public class ValidationException : ExceptionBase
+public class ExceptionValidation : ExceptionBase
 {
     private readonly List<string> _errors;
     
-    public ValidationException(List<string> errorMessages) : base(String.Empty)
+    public ExceptionValidation(List<string> errorMessages) : base(String.Empty)
     {
         _errors = errorMessages;
     }

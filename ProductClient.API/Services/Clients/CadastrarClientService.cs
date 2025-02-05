@@ -22,7 +22,7 @@ public class CadastrarClientService : ICadastrarClientService
     public async Task<ResponseClient> Executar(RequestClient client)
     {
 
-        Validator.ExecuteValidation(client);
+        Validator<RequestClient>.ExecuteValidation(client);
 
         Client entity = new()
         {
