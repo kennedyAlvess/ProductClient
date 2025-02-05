@@ -1,9 +1,8 @@
-﻿using ProductClient.API.Infrastructure.Repository;
+﻿using ProductClient.API.Entities.CustomConvert;
+using ProductClient.API.Infrastructure.Repository;
 using ProductClient.API.Validations;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
-using ProductClient.Exceptions.ExceptionsBase;
-using ProductClient.API.Entities;
 
 namespace ProductClient.API.Services.Clients;
 
@@ -21,17 +20,9 @@ public class CadastrarClientService : ICadastrarClientService
     }
     public async Task<ResponseClient> Executar(RequestClient client)
     {
-
         Validator<RequestClient>.ExecuteValidation(client);
 
-        Client entity = new()
-        {
-            Nome = client.Nome,
-            Email = client.Email,
-            DataNascimento = client.DataNascimento,
-            DataCadastro = DateTime.Now,
-            Cpf = client.Cpf
-        };
+        var entity = ConvertEntity.ToClient(client);
 
         await _clientRepository.Add(entity);
 

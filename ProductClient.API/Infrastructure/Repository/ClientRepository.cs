@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
 using ProductClient.API.Entities;
 
 namespace ProductClient.API.Infrastructure.Repository
 {
     public interface IClientRepository
     {
-        public Task<Client> Add(Client entity);
+        Task<Client> Add(Client entity);
+        Task<Client> Update(Client entity);
+        Task Delete(Client entity);
+        Task<Client> GetClientById(long id);
+        Task<List<Client>> GetAllClients();
 
     }
     public class ClientRepository : IClientRepository
@@ -18,6 +23,29 @@ namespace ProductClient.API.Infrastructure.Repository
         public async Task<Client> Add(Client entity)
         {
             await _context.Clients.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task Delete(Client entity)
+        {
+            _context.Clients.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Client>> GetAllClients()
+        {
+            return await _context.Clients.ToListAsync();
+        }
+
+        public async Task<Client> GetClientById(long id)
+        {
+            return await _context.Clients.FindAsync(id);
+        }
+
+        public async Task<Client> Update(Client entity)
+        {
+            _context.Clients.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
         }

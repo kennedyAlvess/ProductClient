@@ -6,5 +6,4 @@ public class RequestClient
     public string Email { get; set; } = string.Empty;
     public DateOnly DataNascimento { get; set; }
     public string Cpf { get; set; } = string.Empty;
-
 }

@@ -12,9 +12,11 @@ namespace ProductClient.API.Controllers;
 public class ClientsController : ControllerBase
 {
     private readonly ICadastrarClientService _cadastrarClientService;
-    public ClientsController(ICadastrarClientService cadastrarClientService)
+    private readonly IDeletarClientService _deletarClientService;
+    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService)
     {
         _cadastrarClientService = cadastrarClientService;
+        _deletarClientService = deletarClientService;
     }
     [HttpGet("ListarClients")]
     public IActionResult ListarClients()
@@ -43,8 +45,9 @@ public class ClientsController : ControllerBase
     }
 
     [HttpDelete("DeletarClient/{id:long}")]
-    public IActionResult DeletarClient([FromRoute] long id)
+    public async Task<IActionResult> DeletarClient([FromRoute] long id)
     {
+        await _deletarClientService.Executar(id);
         return Ok();
     }
 }
