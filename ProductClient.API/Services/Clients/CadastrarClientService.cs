@@ -21,14 +21,10 @@ public class CadastrarClientService : ICadastrarClientService
     }
     public async Task<ResponseClient> Executar(RequestClient client)
     {
-        var validator = new ClientValidation();
-        var result = validator.Validate(client);
-        if (!result.IsValid)
-        {
-            var errors = result.Errors.Select(erros => erros.ErrorMessage).ToList();
-            throw new ValidationException(errors);
-        }
-        Client entity = new Client
+
+        Validator<RequestClient>.ExecuteValidation(client);
+
+        Client entity = new()
         {
             Nome = client.Nome,
             Email = client.Email,
