@@ -10,6 +10,7 @@ namespace ProductClient.API.Infrastructure.Repository
         Task Delete(Client entity);
         Task<Client> GetClientById(long id);
         Task<List<Client>> GetAllClients();
+        Task<bool> ClientExists(long id);
 
     }
     public class ClientRepository : IClientRepository
@@ -48,6 +49,11 @@ namespace ProductClient.API.Infrastructure.Repository
             _context.Clients.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<bool> ClientExists(long id)
+        {
+            return await _context.Clients.AnyAsync(e => e.Id == id);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace ProductClient.API.Services.Clients
         }
         public async Task Executar(long id)
         {
-            Client entity = await _clientRepository.GetClientById(id) ?? throw new NotFoundException(["Cliente não encontrado."]);
+            await _clientRepository.ClientExists(id) ? throw new NotFoundException("Cliente não encontrado.");
 
-            await _clientRepository.Delete(entity);  
+            await _clientRepository.Delete(long id);  
         }
     }
 }
