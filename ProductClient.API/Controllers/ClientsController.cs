@@ -9,17 +9,22 @@ namespace ProductClient.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 public class ClientsController : ControllerBase
 {
     private readonly ICadastrarClientService _cadastrarClientService;
     private readonly IDeletarClientService _deletarClientService;
     private readonly IListarClientsService _listarClientsService;
-    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService, IListarClientsService listarClientsService)
+    private readonly IBuscarClienteService _buscarClientsService;
+    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService, IListarClientsService listarClientsService
+                            , IBuscarClienteService buscarClientsService)
     {
         _cadastrarClientService = cadastrarClientService;
         _deletarClientService = deletarClientService;
         _listarClientsService = listarClientsService;
+        _buscarClientsService = buscarClientsService;
     }
+    
     [HttpGet("ListarClients")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarClients()
@@ -28,9 +33,10 @@ public class ClientsController : ControllerBase
     }
 
     [HttpGet("ListarClientById/{id:Long}")]
-    public IActionResult GetClientById([FromRoute] long id)
+    [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetClientById([FromRoute] long id)
     {
-        return Ok();
+        return Ok(await _buscarClientsService.Executar(id));
     }
 
     [HttpPost("CadastrarClient")]

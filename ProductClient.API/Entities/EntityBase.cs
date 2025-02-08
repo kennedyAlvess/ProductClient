@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ProductClient.API.Entities
+namespace ProductClient.API.Entities;
+
+public class EntityBase
 {
-    public class EntityBase
-    {
-        [Key]
-        [Required]
-        public long Id { get; set; }
-    }
+    [Key]
+    [Required]
+    public long Id { get; set; }
 }

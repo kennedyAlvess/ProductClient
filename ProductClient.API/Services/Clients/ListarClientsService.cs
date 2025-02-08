@@ -1,3 +1,4 @@
+using ProductClient.API.Entities.CustomConvert;
 using ProductClient.API.Infrastructure.Repository;
 using ProductClient.Communication.ResponseDTO;
 
@@ -13,14 +14,6 @@ public class ListarClientsService(IClientRepository clientRepository) : IListarC
 
     public async Task<List<ResponseClient>> Executar()
     {
-        return [.. (await _clientRepository.GetAllClients()).Select(client => new ResponseClient
-        {
-            Id = client.Id,
-            Nome = client.Nome,
-            Email = client.Email,
-            DataNascimento = client.DataNascimento,
-            Cpf = client.Cpf,
-            Idade = client.Idade
-        })];
+        return [.. (await _clientRepository.GetAllClients()).Select(client => ConvertEntity.ToClientResponse(client))];
     }
 }
