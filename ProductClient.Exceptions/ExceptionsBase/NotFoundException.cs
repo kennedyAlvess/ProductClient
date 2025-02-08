@@ -4,10 +4,8 @@ namespace ProductClient.Exceptions.ExceptionsBase;
 
 public class NotFoundException : ExceptionBase
 {
-    
-    public NotFoundException(string errorMessages) : base(String.Empty)
+    public NotFoundException(string errorMessages) : base(errorMessages)
     {
-
     }
 
     public override List<string> GetErrorsMessages() => [Message];

@@ -11,18 +11,15 @@ public interface ICadastrarClientService
     Task<ResponseClient> Executar(RequestClient client);
 }
 
-public class CadastrarClientService : ICadastrarClientService
+public class CadastrarClientService(IClientRepository clientRepository) : ICadastrarClientService
 {
-    private readonly IClientRepository _clientRepository;
-    public CadastrarClientService(IClientRepository clientRepository)
-    {
-        _clientRepository = clientRepository;
-    }
+    private readonly IClientRepository _clientRepository = clientRepository;
+
     public async Task<ResponseClient> Executar(RequestClient client)
     {
         Validator<RequestClient>.ExecuteValidation(client);
 
-        var entity = ConvertEntity.ToClient(client);
+        var entity = ConvertDTO.ToClient(client);
 
         await _clientRepository.Add(entity);
 

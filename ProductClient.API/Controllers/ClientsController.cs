@@ -13,15 +13,18 @@ public class ClientsController : ControllerBase
 {
     private readonly ICadastrarClientService _cadastrarClientService;
     private readonly IDeletarClientService _deletarClientService;
-    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService)
+    private readonly IListarClientsService _listarClientsService;
+    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService, IListarClientsService listarClientsService)
     {
         _cadastrarClientService = cadastrarClientService;
         _deletarClientService = deletarClientService;
+        _listarClientsService = listarClientsService;
     }
     [HttpGet("ListarClients")]
-    public IActionResult ListarClients()
+    [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> ListarClients()
     {
-        return Ok();
+        return Ok(await _listarClientsService.Executar());
     }
 
     [HttpGet("ListarClientById/{id:Long}")]
@@ -45,6 +48,7 @@ public class ClientsController : ControllerBase
     }
 
     [HttpDelete("DeletarClient/{id:long}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DeletarClient([FromRoute] long id)
     {
         await _deletarClientService.Executar(id);

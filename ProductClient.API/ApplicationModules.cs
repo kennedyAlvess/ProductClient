@@ -14,6 +14,8 @@ namespace ProductClient.API
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICadastrarClientService, CadastrarClientService>();
+            services.AddScoped<IDeletarClientService, DeletarClientService>();
+            services.AddScoped<IListarClientsService, ListarClientsService>();
 
             return services;
         }

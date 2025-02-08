@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductClient.API.Entities;
+using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Infrastructure.Repository
 {
@@ -7,10 +8,10 @@ namespace ProductClient.API.Infrastructure.Repository
     {
         Task<Client> Add(Client entity);
         Task<Client> Update(Client entity);
-        Task Delete(Client entity);
+        Task Deletar(long id);
         Task<Client> GetClientById(long id);
         Task<List<Client>> GetAllClients();
-        Task<bool> ClientExists(long id);
+        Task<bool> ClienteExiste(long id);
 
     }
     public class ClientRepository : IClientRepository
@@ -28,10 +29,14 @@ namespace ProductClient.API.Infrastructure.Repository
             return entity;
         }
 
-        public async Task Delete(Client entity)
+        public async Task Deletar(long id)
         {
-            _context.Clients.Remove(entity);
-            await _context.SaveChangesAsync();
+            var entity = await _context.Clients.FindAsync(id);
+            if (entity is not null)
+            {
+                _context.Clients.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task<List<Client>> GetAllClients()
@@ -51,7 +56,7 @@ namespace ProductClient.API.Infrastructure.Repository
             return entity;
         }
 
-        public async Task<bool> ClientExists(long id)
+        public async Task<bool> ClienteExiste(long id)
         {
             return await _context.Clients.AnyAsync(e => e.Id == id);
         }
