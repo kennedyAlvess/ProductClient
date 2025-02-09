@@ -8,7 +8,7 @@ public interface IListarClientsService
 {
     Task<List<ResponseClient>> Executar();
 }
-public class ListarClientsService(IClientRepository clientRepository) : IListarClientsService
+class ListarClientsService(IClientRepository clientRepository) : IListarClientsService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

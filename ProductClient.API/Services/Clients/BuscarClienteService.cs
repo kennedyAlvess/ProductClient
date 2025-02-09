@@ -10,7 +10,7 @@ public interface IBuscarClienteService
     Task<ResponseClient> Executar(long id);
 }
 
-public class BuscarClienteService(IClientRepository clientRepository) : IBuscarClienteService
+class BuscarClienteService(IClientRepository clientRepository) : IBuscarClienteService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
@@ -20,7 +20,8 @@ public class BuscarClienteService(IClientRepository clientRepository) : IBuscarC
         {
             throw new NotFoundException("Cliente não encontrado.");
         }
-
-        return ConvertEntity.ToClientResponse(await _clientRepository.GetClientById(id));
+        var client = await _clientRepository.GetClientById(id);
+        
+        return ConvertEntity.ToClientResponse(client!);
     }
 }

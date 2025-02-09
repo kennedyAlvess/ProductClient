@@ -3,7 +3,7 @@ using ProductClient.API.Filters;
 using ProductClient.API.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
 builder.Services.AddInfrastructure();
 builder.Services.AddApplicationModules();
 // Add services to the container.
@@ -21,8 +21,6 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
     });
 });
-
-builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
 
 var app = builder.Build();
 

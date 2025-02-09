@@ -8,7 +8,7 @@ public interface IDeletarClientService
     Task Executar(long id);
 }
 
-public class DeletarClientService(IClientRepository clientRepository) : IDeletarClientService
+class DeletarClientService(IClientRepository clientRepository) : IDeletarClientService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

@@ -11,7 +11,7 @@ public interface ICadastrarClientService
     Task<ResponseClient> Executar(RequestClient client);
 }
 
-public class CadastrarClientService(IClientRepository clientRepository) : ICadastrarClientService
+class CadastrarClientService(IClientRepository clientRepository) : ICadastrarClientService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

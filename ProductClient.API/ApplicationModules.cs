@@ -16,6 +16,7 @@ public static class ApplicationModules
         services.AddScoped<IDeletarClientService, DeletarClientService>();
         services.AddScoped<IListarClientsService, ListarClientsService>();
         services.AddScoped<IBuscarClienteService, BuscarClienteService>();
+        services.AddScoped<IAtualizarClienteServicie, AtualizarClienteServicie>();
 
         return services;
     }

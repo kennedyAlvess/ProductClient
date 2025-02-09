@@ -16,13 +16,15 @@ public class ClientsController : ControllerBase
     private readonly IDeletarClientService _deletarClientService;
     private readonly IListarClientsService _listarClientsService;
     private readonly IBuscarClienteService _buscarClientsService;
+    private readonly IAtualizarClienteServicie _atualizarClientsService;
     public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService, IListarClientsService listarClientsService
-                            , IBuscarClienteService buscarClientsService)
+                            , IBuscarClienteService buscarClientsService, IAtualizarClienteServicie atualizarClientsService)
     {
         _cadastrarClientService = cadastrarClientService;
         _deletarClientService = deletarClientService;
         _listarClientsService = listarClientsService;
         _buscarClientsService = buscarClientsService;
+        _atualizarClientsService = atualizarClientsService;
     }
     
     [HttpGet("ListarClients")]
@@ -47,10 +49,11 @@ public class ClientsController : ControllerBase
         return Created(string.Empty, result);
     }
 
-    [HttpPut("AtualizarClient/{id:long}")]
-    public IActionResult AtualizarClient([FromRoute] long id, [FromBody] string value)
+    [HttpPatch("AtualizarClient")]
+    [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> AtualizarClient([FromBody] RequestClient client)
     {
-        return Ok();
+        return Ok(await _atualizarClientsService.Executar(client));
     }
 
     [HttpDelete("DeletarClient/{id:long}")]

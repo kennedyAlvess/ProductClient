@@ -9,19 +9,15 @@ namespace ProductClient.API.Infrastructure.Repository
         Task<Client> Add(Client entity);
         Task<Client> Update(Client entity);
         Task Deletar(long id);
-        Task<Client> GetClientById(long id);
+        Task<Client?> GetClientById(long id);
         Task<List<Client>> GetAllClients();
         Task<bool> ClienteExiste(long id);
 
     }
-    public class ClientRepository : IClientRepository
+    public class ClientRepository(ProductClienteDbContext context) : IClientRepository
     {
-        private readonly ProductClienteDbContext _context;
+        private readonly ProductClienteDbContext _context = context;
 
-        public ClientRepository(ProductClienteDbContext context)
-        {
-            _context = context;
-        }
         public async Task<Client> Add(Client entity)
         {
             await _context.Clients.AddAsync(entity);
@@ -44,7 +40,7 @@ namespace ProductClient.API.Infrastructure.Repository
             return await _context.Clients.ToListAsync();
         }
 
-        public async Task<Client> GetClientById(long id)
+        public async Task<Client?> GetClientById(long id)
         {
             return await _context.Clients.FindAsync(id);
         }
