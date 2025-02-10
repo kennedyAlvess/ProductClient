@@ -1,3 +1,4 @@
+using ProductClient.API.Entities;
 using ProductClient.API.Entities.CustomConvert;
 using ProductClient.API.Infrastructure.Repository;
 using ProductClient.Communication.RequestsDTO;
