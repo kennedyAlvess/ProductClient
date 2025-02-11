@@ -23,10 +23,6 @@ class CadastrarClientService(IClientRepository clientRepository) : ICadastrarCli
 
         await _clientRepository.Add(entity);
 
-        return new ResponseClient
-        {
-            Id = entity.Id,
-            Nome = entity.Nome
-        };
+        return ConvertEntity.ToClientResponse(entity);
     }
 }

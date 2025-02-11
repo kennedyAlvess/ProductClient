@@ -53,7 +53,8 @@ public class ClientsController : ControllerBase
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> AtualizarClient([FromBody] RequestClient client)
     {
-        return Ok(await _atualizarClientsService.Executar(client));
+        await _atualizarClientsService.Executar(client);
+        return Ok("Cliente atualizado com sucesso.");
     }
 
     [HttpDelete("DeletarClient/{id:long}")]

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ProductClient.API.Entities;
-using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Infrastructure.Repository
 {
@@ -12,6 +11,7 @@ namespace ProductClient.API.Infrastructure.Repository
         Task<Client?> GetClientById(long id);
         Task<List<Client>> GetAllClients();
         Task<bool> ClienteExiste(long id);
+        Task SaveChangesAsync();
 
     }
     public class ClientRepository(ProductClienteDbContext context) : IClientRepository
@@ -55,6 +55,11 @@ namespace ProductClient.API.Infrastructure.Repository
         public async Task<bool> ClienteExiste(long id)
         {
             return await _context.Clients.AnyAsync(e => e.Id == id);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

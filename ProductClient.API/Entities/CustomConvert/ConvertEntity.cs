@@ -1,6 +1,8 @@
 using ProductClient.Communication.ResponseDTO;
+using ProductClient.Communication.Utils;
 
 namespace ProductClient.API.Entities.CustomConvert;
+
 
 public static class ConvertEntity
 {
@@ -10,9 +12,9 @@ public static class ConvertEntity
         {
             Id = client.Id,
             Nome = client.Nome,
-            Email = client.Email,
+            Email = Mascaras.MascaraEmail(client.Email),
             DataNascimento = client.DataNascimento,
-            Cpf = client.Cpf,
+            Cpf = Mascaras.MascaraCpf(client.Cpf),
             Idade = client.Idade
         };
     }

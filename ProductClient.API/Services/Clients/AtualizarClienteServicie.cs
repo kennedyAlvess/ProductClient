@@ -1,29 +1,37 @@
-using ProductClient.API.Entities;
-using ProductClient.API.Entities.CustomConvert;
 using ProductClient.API.Infrastructure.Repository;
+using ProductClient.API.Validations;
 using ProductClient.Communication.RequestsDTO;
-using ProductClient.Communication.ResponseDTO;
 using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.Clients;
 
 public interface IAtualizarClienteServicie
 {
-    Task<ResponseClient> Executar(RequestClient client);   
+    Task Executar(RequestClient client);   
 }
 class AtualizarClienteServicie(IClientRepository clientRepository) : IAtualizarClienteServicie
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task<ResponseClient> Executar(RequestClient client)
+    public async Task Executar(RequestClient client)
     {
-        if(!await _clientRepository.ClienteExiste(client.Id))
+        if (!await _clientRepository.ClienteExiste(client.Id))
         {
             throw new NotFoundException("Cliente não encontrado.");
         }
         var entity = await _clientRepository.GetClientById(client.Id);
         
+        var clientPropriedades = client?.GetType().GetProperties().Where(p => p.GetValue(client) is not null && p.Name != "Id");
 
-        return ConvertEntity.ToClientResponse(await _clientRepository.Update(entity!));
+        foreach (var propriedade in clientPropriedades!)
+        {
+            var novoValor = client?.GetType().GetProperty(propriedade.Name)?.GetValue(client);
+
+            ValidadorIndividual.Validar(propriedade.Name, client!);
+
+            entity?.GetType().GetProperty(propriedade.Name)?.SetValue(entity, novoValor);
+        }
+
+        await _clientRepository.SaveChangesAsync();
     }
 }
