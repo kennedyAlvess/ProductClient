@@ -14,6 +14,6 @@ class ListarClientsService(IClientRepository clientRepository) : IListarClientsS
 
     public async Task<List<ResponseClient>> Executar()
     {
-        return [.. (await _clientRepository.GetAllClients()).Select(client => ConvertEntity.ToClientResponse(client))];
+        return [.. (await _clientRepository.GetAllClients()).Select(ConvertEntity.ToClientResponse)];
     }
 }

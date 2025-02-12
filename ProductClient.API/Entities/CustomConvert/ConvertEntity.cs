@@ -1,3 +1,4 @@
+using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
 using ProductClient.Communication.Utils;
 
@@ -16,6 +17,19 @@ public static class ConvertEntity
             DataNascimento = client.DataNascimento,
             Cpf = Mascaras.MascaraCpf(client.Cpf),
             Idade = client.Idade
+        };
+    }
+
+    public static RequestClient ToClientRequest(Client client)
+    {
+        return new RequestClient
+        {
+            Id = client.Id,
+            Nome = client.Nome,
+            Email =client.Email,
+            DataNascimento = client.DataNascimento,
+            Cpf = client.Cpf,
+            DataCadastro = client.DataCadastro
         };
     }
 }

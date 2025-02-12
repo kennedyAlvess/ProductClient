@@ -9,9 +9,9 @@ public static class ConvertDTO
         {
             Nome = requestClient.Nome,
             Email = requestClient.Email,
-            DataNascimento = requestClient.DataNascimento,
+            DataNascimento = (DateOnly)requestClient.DataNascimento!,
             DataCadastro = DateTime.Now,
-            Cpf = requestClient.Cpf
+            Cpf = requestClient.Cpf.Replace(".", "").Replace("-", "")
         };
     }
 }

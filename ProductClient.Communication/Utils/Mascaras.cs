@@ -6,7 +6,8 @@ public static partial class Mascaras
 {
     public static string MascaraCpf(string cpf)
     {
-        return CPFRegex().Replace(cpf, "***.***.$3-$4");
+        var cpfFormatado = Regex.Replace(cpf, @"(\d{3})(\d{3})(\d{3})(\d{2})", "$1.$2.$3-$4");
+        return CPFRegex().Replace(cpfFormatado, "***.***.$3-$4");
     }
 
     public static string MascaraEmail(string email)
@@ -21,6 +22,4 @@ public static partial class Mascaras
 
     [GeneratedRegex(@"(^\w{3})(\w+)(@.*)")]
     private static partial Regex EmailRegex();
-
-
 }

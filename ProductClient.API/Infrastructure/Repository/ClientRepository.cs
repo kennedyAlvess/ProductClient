@@ -6,7 +6,7 @@ namespace ProductClient.API.Infrastructure.Repository
     public interface IClientRepository
     {
         Task<Client> Add(Client entity);
-        Task<Client> Update(Client entity);
+        Task Update(Client entity);
         Task Deletar(long id);
         Task<Client?> GetClientById(long id);
         Task<List<Client>> GetAllClients();
@@ -45,11 +45,10 @@ namespace ProductClient.API.Infrastructure.Repository
             return await _context.Clients.FindAsync(id);
         }
 
-        public async Task<Client> Update(Client entity)
+        public async Task Update(Client entity)
         {
             _context.Clients.Update(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
 
         public async Task<bool> ClienteExiste(long id)

@@ -15,7 +15,7 @@ public class Client : EntityBase
     public string Email { get; set; } = string.Empty;
     [Required]
     public DateOnly DataNascimento { get; set; }
-    public DateTime DataCadastro { get; set; }
+    public DateTime DataCadastro { get; set; } = DateTime.Now;
     [Required]
     [MaxLength(11)]
     public string Cpf { get; set; } = string.Empty;
