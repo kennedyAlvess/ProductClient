@@ -10,5 +10,5 @@ public class RequestClient
     public DateOnly? DataNascimento { get; set; }
     [JsonIgnore]
     public DateTime? DataCadastro { get; set; }
-    public string Cpf { get; set; } = string.Empty;
+    public string? Cpf { get; set; } = string.Empty;
 }

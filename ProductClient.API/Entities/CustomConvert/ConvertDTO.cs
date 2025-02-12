@@ -11,7 +11,7 @@ public static class ConvertDTO
             Email = requestClient.Email,
             DataNascimento = (DateOnly)requestClient.DataNascimento!,
             DataCadastro = DateTime.Now,
-            Cpf = requestClient.Cpf.Replace(".", "").Replace("-", "")
+            Cpf = requestClient.Cpf!.Replace(".", "").Replace("-", "")
         };
     }
 }

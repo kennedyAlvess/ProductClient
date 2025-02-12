@@ -4,8 +4,8 @@ namespace ProductClient.API.Validations.CustomValitadion;
 
 public static class CustonsValitadions
 {
-    public static IRuleBuilderOptionsConditions<T, string> CpfValidation<T>(
-        this IRuleBuilder<T, string> ruleBuilder
+    public static IRuleBuilderOptionsConditions<T, string?> CpfValidation<T>(
+        this IRuleBuilder<T, string?> ruleBuilder
     )
     {
         return ruleBuilder.Custom((cpf, context) =>
