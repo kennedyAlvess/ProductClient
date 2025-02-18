@@ -1,3 +1,4 @@
+using ProductClient.API.Services.ClientProducts;
 using ProductClient.API.Services.Clients;
 
 namespace ProductClient.API;
@@ -17,6 +18,7 @@ public static class ApplicationModules
         services.AddScoped<IListarClientsService, ListarClientsService>();
         services.AddScoped<IBuscarClienteService, BuscarClienteService>();
         services.AddScoped<IAtualizarClienteServicie, AtualizarClienteServicie>();
+        services.AddScoped<IListarClientProducts, ListarClientProducts>();
 
         return services;
     }

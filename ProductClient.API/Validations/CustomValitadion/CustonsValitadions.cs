@@ -10,12 +10,12 @@ public static class CustonsValitadions
     {
         return ruleBuilder.Custom((cpf, context) =>
         {
-            if (!ValidaCpf(cpf))
+            if (!ValidaCpf(cpf!))
                 context.AddFailure("CPF inválido.");
         });
     }
-    public static IRuleBuilderOptionsConditions<T, DateOnly?> DataNascimentoValidation<T>(
-        this IRuleBuilder<T, DateOnly?> ruleBuilder
+    public static IRuleBuilderOptionsConditions<T, DateOnly> DataNascimentoValidation<T>(
+        this IRuleBuilder<T, DateOnly> ruleBuilder
     )
     {
         return ruleBuilder.Custom((dataNascimento, context) =>
@@ -30,8 +30,8 @@ public static class CustonsValitadions
 
             if (dataNascimento > today)
                 context.AddFailure("A data de nascimento não pode ser maior que a data atual.");
-#nullable disable
-            var idade = today.Year - dataNascimento.Value.Year;
+
+            var idade = today.Year - dataNascimento.Year;
             if (idade < 18)
                 context.AddFailure("O cliente deve ser maior de 18 anos.");
         });

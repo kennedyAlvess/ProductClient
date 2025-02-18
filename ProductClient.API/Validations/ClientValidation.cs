@@ -14,3 +14,12 @@ public class ClientValidation : AbstractValidator<RequestClient>
         RuleFor(requestClient => requestClient.DataNascimento).DataNascimentoValidation();
     }
 }
+
+public class ClientAtualizarValidation : AbstractValidator<RequestAtualizarClient>
+{
+    public ClientAtualizarValidation()
+    {
+        RuleFor(requestClient => requestClient.Nome).NotEmpty().WithMessage("Nome inválido.");
+        RuleFor(requestClient => requestClient.DataNascimento).DataNascimentoValidation();
+    }
+}

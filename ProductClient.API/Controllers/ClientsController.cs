@@ -34,11 +34,11 @@ public class ClientsController : ControllerBase
         return Ok(await _listarClientsService.Executar());
     }
 
-    [HttpGet("ListarClientById/{id:Long}")]
+    [HttpGet("ListarClientById/{Id:Long}")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetClientById([FromRoute] long id)
+    public async Task<IActionResult> GetClientById([FromRoute] long Id)
     {
-        return Ok(await _buscarClientsService.Executar(id));
+        return Ok(await _buscarClientsService.Executar(Id));
     }
 
     [HttpPost("CadastrarClient")]
@@ -49,20 +49,20 @@ public class ClientsController : ControllerBase
         return Created(string.Empty, result);
     }
 
-    [HttpPatch("AtualizarClient")]
-    [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> AtualizarClient([FromBody] RequestClient client)
+    [HttpPatch("AtualizarClient/{Id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AtualizarClient([FromBody] RequestAtualizarClient client, long Id)
     {
-        await _atualizarClientsService.Executar(client);
+        await _atualizarClientsService.Executar(client, Id);
         return Ok("Cliente atualizado com sucesso.");
     }
 
-    [HttpDelete("DeletarClient/{id:long}")]
+    [HttpDelete("DeletarClient/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DeletarClient([FromRoute] long id)
+    public async Task<IActionResult> DeletarClient([FromRoute] long Id)
     {
-        await _deletarClientService.Executar(id);
-        return Ok();
+        await _deletarClientService.Executar(Id);
+        return Ok("Cliente deletado com sucesso.");
     }
 }
 

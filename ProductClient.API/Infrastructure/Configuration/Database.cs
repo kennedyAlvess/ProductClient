@@ -32,6 +32,7 @@ public static class Configuration
     public static IServiceCollection AddRepository(this IServiceCollection services)
     {
         services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddScoped<IClientProductsRepository, ClientProductsRepository>();
         return services;
     }
 }

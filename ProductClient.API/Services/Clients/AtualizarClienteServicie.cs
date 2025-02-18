@@ -8,33 +8,25 @@ namespace ProductClient.API.Services.Clients;
 
 public interface IAtualizarClienteServicie
 {
-    Task Executar(RequestClient client);   
+    Task Executar(RequestAtualizarClient client, long Id);   
 }
 class AtualizarClienteServicie(IClientRepository clientRepository) : IAtualizarClienteServicie
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task Executar(RequestClient client)
+    public async Task Executar(RequestAtualizarClient client, long Id)
     {
 
-        if (!await _clientRepository.ClienteExiste(client.Id))
+        if (!await _clientRepository.ClienteExiste(Id))
         {
             throw new NotFoundException("Cliente não encontrado.");
         }
-        var entity = await _clientRepository.GetClientById(client.Id);
-        
-        var clientPropriedades = client?.GetType().GetProperties().Where(p => p.GetValue(client) is not null 
-                                                                                    && p.GetValue(client)?.ToString() != "" 
-                                                                                    && p.Name != "Id");
+        var entity = await _clientRepository.GetClientById(Id);
 
-        foreach (var propriedade in clientPropriedades!)
-        {
-            var novoValor = client?.GetType().GetProperty(propriedade.Name)?.GetValue(client);
+        Validator<RequestAtualizarClient>.ExecuteValidation(client);
 
-            entity?.GetType().GetProperty(propriedade.Name)?.SetValue(entity, novoValor);
-        }
-
-        Validator<RequestClient>.ExecuteValidation(ConvertEntity.ToClientRequest(entity!));
+        entity!.Nome = client.Nome;
+        entity!.DataNascimento = client.DataNascimento;
 
         await _clientRepository.Update(entity!);
     }
