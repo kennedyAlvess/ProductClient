@@ -6,12 +6,12 @@ using ProductClient.Communication.ResponseDTO;
 
 namespace ProductClient.API.Services.Clients;
 
-public interface ICadastrarClientService
+public interface ICadastrarClienteService
 {
     Task<ResponseClient> Executar(RequestClient client);
 }
 
-class CadastrarClientService(IClientRepository clientRepository) : ICadastrarClientService
+class CadastrarClienteService(IClientRepository clientRepository) : ICadastrarClienteService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

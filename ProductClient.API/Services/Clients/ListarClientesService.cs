@@ -4,11 +4,11 @@ using ProductClient.Communication.ResponseDTO;
 
 namespace ProductClient.API.Services.Clients;
 
-public interface IListarClientsService
+public interface IListarClientesService
 {
     Task<List<ResponseClient>> Executar();
 }
-class ListarClientsService(IClientRepository clientRepository) : IListarClientsService
+class ListarClientesService(IClientRepository clientRepository) : IListarClientesService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

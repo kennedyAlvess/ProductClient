@@ -12,12 +12,12 @@ namespace ProductClient.API.Controllers;
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 public class ClientsController : ControllerBase
 {
-    private readonly ICadastrarClientService _cadastrarClientService;
-    private readonly IDeletarClientService _deletarClientService;
-    private readonly IListarClientsService _listarClientsService;
+    private readonly ICadastrarClienteService _cadastrarClientService;
+    private readonly IDeletarClienteService _deletarClientService;
+    private readonly IListarClientesService _listarClientsService;
     private readonly IBuscarClienteService _buscarClientsService;
     private readonly IAtualizarClienteServicie _atualizarClientsService;
-    public ClientsController(ICadastrarClientService cadastrarClientService, IDeletarClientService deletarClientService, IListarClientsService listarClientsService
+    public ClientsController(ICadastrarClienteService cadastrarClientService, IDeletarClienteService deletarClientService, IListarClientesService listarClientsService
                             , IBuscarClienteService buscarClientsService, IAtualizarClienteServicie atualizarClientsService)
     {
         _cadastrarClientService = cadastrarClientService;
