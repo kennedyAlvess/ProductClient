@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProductClient.API.Entities;
 
-[Index(nameof(Descricao), IsUnique = true)]
+[Index(nameof(Descricao), IsUnique = false)]
 [Table("Products")]
 public class Product : EntityBase
 {
