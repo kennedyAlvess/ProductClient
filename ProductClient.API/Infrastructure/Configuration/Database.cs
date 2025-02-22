@@ -33,6 +33,7 @@ public static class Configuration
     {
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<IClientProductsRepository, ClientProductsRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
         return services;
     }
 }
