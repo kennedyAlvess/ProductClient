@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductClient.API.Infrastructure;
 
@@ -11,9 +12,11 @@ using ProductClient.API.Infrastructure;
 namespace ProductClient.API.Persistence.Migrations
 {
     [DbContext(typeof(ProductClienteDbContext))]
-    partial class ProductClienteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250222024415_att IsUnique coluna Descricao")]
+    partial class attIsUniquecolunaDescricao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
