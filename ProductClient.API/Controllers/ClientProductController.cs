@@ -15,11 +15,11 @@ public class ClientProductController : ControllerBase
         _listarClientProducts = listarClientProducts;
     }
     
-    [HttpGet("ListarClientProducts/{Id}")]
+    [HttpGet("ListarProdutosPorCliente/{ClienteId}")]
     [ProducesResponseType(typeof(List<ResponseClientProducts>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListarClientsProduc(long Id)
+    public async Task<IActionResult> ListarClientsProduc(long ClienteId)
     {
-        return Ok(await _listarClientProducts.Executar(Id));
+        return Ok(await _listarClientProducts.Executar(ClienteId));
     }
 
     // [HttpGet("ListarClientById/{Id:Long}")]

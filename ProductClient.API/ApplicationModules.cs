@@ -1,5 +1,6 @@
 using ProductClient.API.Services.ClientProducts;
 using ProductClient.API.Services.Clients;
+using ProductClient.API.Services.Products;
 
 namespace ProductClient.API;
 public static class ApplicationModules
@@ -13,12 +14,23 @@ public static class ApplicationModules
 
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
-        services.AddScoped<ICadastrarClientService, CadastrarClientService>();
-        services.AddScoped<IDeletarClientService, DeletarClientService>();
-        services.AddScoped<IListarClientsService, ListarClientsService>();
-        services.AddScoped<IBuscarClienteService, BuscarClienteService>();
+        //Cliente
         services.AddScoped<IAtualizarClienteServicie, AtualizarClienteServicie>();
+        services.AddScoped<IBuscarClienteService, BuscarClienteService>();
+        services.AddScoped<ICadastrarClienteService, CadastrarClienteService>();
+        services.AddScoped<IDeletarClienteService, DeletarClienteService>();
+        services.AddScoped<IListarClientesService, ListarClientesService>();
+        
+        //ClientProducts
+        services.AddScoped<IDevolverProdutos, DevolverProdutos>();
+        services.AddScoped<IInserirClienteProdutosService, InserirClienteProdutosService>();
         services.AddScoped<IListarClientProducts, ListarClientProducts>();
+
+        //Produto
+        services.AddScoped<IBuscarProdutoService, BuscarProdutoService>();
+        services.AddScoped<ICadastrarProdutoService, CadastrarProdutoService>();
+        services.AddScoped<IDeletarProdutoService, DeletarProdutoService>();
+        services.AddScoped<IListarProdutoService, ListarProdutoService>();
 
         return services;
     }
