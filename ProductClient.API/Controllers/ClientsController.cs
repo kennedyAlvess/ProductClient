@@ -27,39 +27,39 @@ public class ClientsController : ControllerBase
         _atualizarClientsService = atualizarClientsService;
     }
     
-    [HttpGet("ListarClients")]
+    [HttpGet("ListarClientes")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListarClients()
+    public async Task<IActionResult> ListarClientes()
     {
         return Ok(await _listarClientsService.Executar());
     }
 
-    [HttpGet("ListarClientById/{Id:Long}")]
+    [HttpGet("ListarClientePorId/{Id}")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetClientById([FromRoute] long Id)
+    public async Task<IActionResult> GetClientById(long Id)
     {
         return Ok(await _buscarClientsService.Executar(Id));
     }
 
-    [HttpPost("CadastrarClient")]
+    [HttpPost("CadastrarCliente")]
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
-    public async Task<IActionResult> CadastrarClient([FromBody] RequestClient client)
+    public async Task<IActionResult> CadastrarCliente([FromBody] RequestClient client)
     {
         var result = await _cadastrarClientService.Executar(client);
         return Created(string.Empty, result);
     }
 
-    [HttpPatch("AtualizarClient/{Id}")]
+    [HttpPatch("AtualizarCliente/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AtualizarClient([FromBody] RequestAtualizarClient client, long Id)
+    public async Task<IActionResult> AtualizarCliente([FromBody] RequestAtualizarClient client, long Id)
     {
         await _atualizarClientsService.Executar(client, Id);
         return Ok("Cliente atualizado com sucesso.");
     }
 
-    [HttpDelete("DeletarClient/{Id}")]
+    [HttpDelete("DeletarCliente/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DeletarClient([FromRoute] long Id)
+    public async Task<IActionResult> DeletarCliente([FromRoute] long Id)
     {
         await _deletarClientService.Executar(Id);
         return Ok("Cliente deletado com sucesso.");

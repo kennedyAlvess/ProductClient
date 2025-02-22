@@ -17,7 +17,7 @@ public class ClientProductController : ControllerBase
     
     [HttpGet("ListarClientProducts/{Id}")]
     [ProducesResponseType(typeof(List<ResponseClientProducts>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListarClients(long Id)
+    public async Task<IActionResult> ListarClientsProduc(long Id)
     {
         return Ok(await _listarClientProducts.Executar(Id));
     }
