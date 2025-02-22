@@ -19,7 +19,6 @@ public static class ConvertEntity
             Idade = client.Idade
         };
     }
-
     public static RequestClient ToClientRequest(Client client)
     {
         return new RequestClient
@@ -32,4 +31,14 @@ public static class ConvertEntity
             DataCadastro = client.DataCadastro
         };
     }
+    public static ResponseProduct ToProductResponse(Product product)
+    {
+        return new ResponseProduct
+        {
+            Descricao = product.Descricao,
+            Marca = product.Marca,
+            ValorUnitario = product.ValorUnitario
+        };
+    }
+
 }

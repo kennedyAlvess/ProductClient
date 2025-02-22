@@ -9,9 +9,29 @@ public static class ConvertDTO
         {
             Nome = requestClient.Nome,
             Email = requestClient.Email,
-            DataNascimento = (DateOnly)requestClient.DataNascimento!,
+            DataNascimento = requestClient.DataNascimento!,
             DataCadastro = DateTime.Now,
             Cpf = requestClient.Cpf!.Replace(".", "").Replace("-", "")
+        };
+    }
+
+    public static ClientProduct ToClientProduct(RequestClientProducts requestClientProducts)
+    {
+        return new ClientProduct
+        {
+            ClientId = requestClientProducts.ClientId,
+            ProductId = requestClientProducts.ProductId,
+            Quantidade = requestClientProducts.Quantidade
+        };
+    }
+
+    public static Product ToProduct(RequestProduct requestProduct)
+    {
+        return new Product
+        {
+            Descricao = requestProduct.Descricao,
+            Marca = requestProduct.Marca,
+            ValorUnitario = requestProduct.ValorUnitario
         };
     }
 }
