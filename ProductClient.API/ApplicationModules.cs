@@ -22,9 +22,10 @@ public static class ApplicationModules
         services.AddScoped<IListarClientesService, ListarClientesService>();
         
         //ClientProducts
-        services.AddScoped<IDevolverProdutos, DevolverProdutos>();
+        services.AddScoped<IDevolverProdutosService, DevolverProdutosService>();
         services.AddScoped<IInserirClienteProdutosService, InserirClienteProdutosService>();
-        services.AddScoped<IListarClientProducts, ListarClientProducts>();
+        services.AddScoped<IListarClientProductsService, ListarClientProductsService>();
+        services.AddScoped<IDevolverVendaService, DevolverVendaService>();
 
         //Produto
         services.AddScoped<IBuscarProdutoService, BuscarProdutoService>();
