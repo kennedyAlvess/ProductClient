@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductClient.API.Infrastructure;
 
@@ -11,9 +12,13 @@ using ProductClient.API.Infrastructure;
 namespace ProductClient.API.Persistence.Migrations
 {
     [DbContext(typeof(ProductClienteDbContext))]
-    partial class ProductClienteDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250224015458_ajustando id da tabela")]
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+    partial class ajustandoiddatabela
+#pragma warning restore CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,12 +72,6 @@ namespace ProductClient.API.Persistence.Migrations
 
             modelBuilder.Entity("ProductClient.API.Entities.ClientProduct", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
                     b.Property<long>("ClientId")
                         .HasColumnType("bigint");
 
@@ -85,7 +84,7 @@ namespace ProductClient.API.Persistence.Migrations
                     b.Property<decimal>("ValorTotal")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ClientId", "ProductId");
 
                     b.HasIndex("ClientId");
 
