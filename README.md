@@ -60,6 +60,7 @@ ProductClient é uma API simples para gerenciar clientes e produtos. Ela permite
 2. Execute as migrações do banco de dados:
 
     ```sh
+    dotnet ef migrations ADD "nome" - CRIANDO MIGRATION 
     dotnet ef database update --project ProductClient.API
     ```
 
