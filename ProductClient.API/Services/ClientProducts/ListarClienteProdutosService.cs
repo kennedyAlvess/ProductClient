@@ -5,12 +5,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.ClientProducts;
 
-public interface IListarClientProducts
+public interface IListarClientProductsService
 {
     Task<List<ResponseClientProducts>> Executar(long Id);
 }
 
-public class ListarClientProducts(IClientProductsRepository clientProductsRepository) : IListarClientProducts
+public class ListarClientProductsService(IClientProductsRepository clientProductsRepository) : IListarClientProductsService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
     public async Task<List<ResponseClientProducts>> Executar(long Id)

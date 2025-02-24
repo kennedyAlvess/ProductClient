@@ -8,7 +8,7 @@ public class ClientProductsConfiguration : IEntityTypeConfiguration<ClientProduc
 {
     public void Configure(EntityTypeBuilder<ClientProduct> builder)
     {
-        builder.HasKey(cp => new { cp.ClientId, cp.ProductId });
+        builder.HasKey(cp => cp.Id);
 
         builder.HasOne(cp => cp.Client)
                .WithMany(c => c.ClientProducts)
