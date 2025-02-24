@@ -8,21 +8,14 @@ namespace ProductClient.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class ClientProductController : ControllerBase
+public class ClientProductController(IListarClientProductsService listarClientProducts, IInserirClienteProdutosService inserirClienteProdutosService, 
+                                    IDevolverProdutosService devolverProdutos, IDevolverVendaService devolverVenda) : ControllerBase
 {
-    private readonly IListarClientProductsService _listarClientProducts;
-    private readonly IInserirClienteProdutosService _inserirClienteProdutosService;
-    private readonly IDevolverProdutosService _devolverProdutos;
-    private readonly IDevolverVendaService _devolverVenda;
-    public ClientProductController(IListarClientProductsService listarClientProducts, IInserirClienteProdutosService inserirClienteProdutosService, IDevolverProdutosService devolverProdutos
-                                    , IDevolverVendaService devolverVenda)
-    {
-        _listarClientProducts = listarClientProducts;
-        _inserirClienteProdutosService = inserirClienteProdutosService;
-        _devolverProdutos = devolverProdutos;
-        _devolverVenda = devolverVenda;
-    }
-    
+    private readonly IListarClientProductsService _listarClientProducts = listarClientProducts;
+    private readonly IInserirClienteProdutosService _inserirClienteProdutosService = inserirClienteProdutosService;
+    private readonly IDevolverProdutosService _devolverProdutos = devolverProdutos;
+    private readonly IDevolverVendaService _devolverVenda = devolverVenda;
+
     [HttpGet("ListarProdutosPorCliente/{ClienteId}")]
     [ProducesResponseType(typeof(List<ResponseClientProducts>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarClientsProduc([FromRoute] long ClienteId)

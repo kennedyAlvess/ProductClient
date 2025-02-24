@@ -10,17 +10,13 @@ public interface IInserirClienteProdutosService
     Task Executar(RequestClientProducts request);
 }
 
-class InserirClienteProdutosService : IInserirClienteProdutosService
+class InserirClienteProdutosService(IClientProductsRepository clientProductsRepository, IClientRepository clientRepository, 
+                                    IProductRepository productRepository) : IInserirClienteProdutosService
 {
-    private readonly IClientProductsRepository _clientProductsRepository;
-    private readonly IClientRepository _clientRepository;
-    private readonly IProductRepository _productRepository;
-    public InserirClienteProdutosService(IClientProductsRepository clientProductsRepository, IClientRepository clientRepository, IProductRepository productRepository)
-    {
-        _clientProductsRepository = clientProductsRepository;
-        _clientRepository = clientRepository;
-        _productRepository = productRepository;
-    }
+    private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
+    private readonly IClientRepository _clientRepository = clientRepository;
+    private readonly IProductRepository _productRepository = productRepository;
+
     public async Task Executar(RequestClientProducts request)
     {
         var client = await _clientRepository.ClienteExiste(request.ClientId);

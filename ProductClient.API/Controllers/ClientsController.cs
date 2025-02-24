@@ -10,23 +10,15 @@ namespace ProductClient.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class ClientsController : ControllerBase
+public class ClientsController(ICadastrarClienteService cadastrarClientService, IDeletarClienteService deletarClientService, IListarClientesService listarClientsService
+                            , IBuscarClienteService buscarClientsService, IAtualizarClienteServicie atualizarClientsService) : ControllerBase
 {
-    private readonly ICadastrarClienteService _cadastrarClientService;
-    private readonly IDeletarClienteService _deletarClientService;
-    private readonly IListarClientesService _listarClientsService;
-    private readonly IBuscarClienteService _buscarClientsService;
-    private readonly IAtualizarClienteServicie _atualizarClientsService;
-    public ClientsController(ICadastrarClienteService cadastrarClientService, IDeletarClienteService deletarClientService, IListarClientesService listarClientsService
-                            , IBuscarClienteService buscarClientsService, IAtualizarClienteServicie atualizarClientsService)
-    {
-        _cadastrarClientService = cadastrarClientService;
-        _deletarClientService = deletarClientService;
-        _listarClientsService = listarClientsService;
-        _buscarClientsService = buscarClientsService;
-        _atualizarClientsService = atualizarClientsService;
-    }
-    
+    private readonly ICadastrarClienteService _cadastrarClientService = cadastrarClientService;
+    private readonly IDeletarClienteService _deletarClientService = deletarClientService;
+    private readonly IListarClientesService _listarClientsService = listarClientsService;
+    private readonly IBuscarClienteService _buscarClientsService = buscarClientsService;
+    private readonly IAtualizarClienteServicie _atualizarClientsService = atualizarClientsService;
+
     [HttpGet("ListarClientes")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarClientes()

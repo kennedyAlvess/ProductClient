@@ -10,15 +10,11 @@ public interface IDevolverProdutosService
     Task Executar(RequestClientProducts request, long Id);
 }
 
-public class DevolverProdutosService : IDevolverProdutosService
+public class DevolverProdutosService(IClientProductsRepository clientProductsRepository, IProductRepository productRepository) : IDevolverProdutosService
 {
-    private readonly IClientProductsRepository _clientProductsRepository;
-    private readonly IProductRepository _productRepository;
-    public DevolverProdutosService(IClientProductsRepository clientProductsRepository, IProductRepository productRepository)
-    {
-        _clientProductsRepository = clientProductsRepository;
-        _productRepository = productRepository;
-    }
+    private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
+    private readonly IProductRepository _productRepository = productRepository;
+
     public async Task Executar(RequestClientProducts request, long Id)
     {
         var clientProduct = await _clientProductsRepository.GetClientProduct(Id) ?? throw new NotFoundException("Venda não encontrada.");

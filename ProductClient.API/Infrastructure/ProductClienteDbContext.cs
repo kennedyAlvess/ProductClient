@@ -3,12 +3,8 @@ using ProductClient.API.Entities;
 
 namespace ProductClient.API.Infrastructure
 {
-    public class ProductClienteDbContext : DbContext
+    public class ProductClienteDbContext(DbContextOptions<ProductClienteDbContext> options) : DbContext(options)
     {
-        public ProductClienteDbContext(DbContextOptions<ProductClienteDbContext> options) : base(options)
-        {
-        }
-
         public DbSet<Client> Clients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ClientProduct> ClientProducts { get; set; }

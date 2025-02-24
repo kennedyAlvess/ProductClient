@@ -10,21 +10,14 @@ namespace ProductClient.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class ProductController : ControllerBase
+public class ProductController(ICadastrarProdutoService cadastrarProductService, IDeletarProdutoService deletarProductService, IListarProdutoService listarProductsService
+                            , IBuscarProdutoService buscarProductsService) : ControllerBase
 {
 
-    private readonly ICadastrarProdutoService _cadastrarProductService;
-    private readonly IDeletarProdutoService _deletarProductService;
-    private readonly IListarProdutoService _listarProductsService;
-    private readonly IBuscarProdutoService _buscarProductsService;
-    public ProductController(ICadastrarProdutoService cadastrarProductService, IDeletarProdutoService deletarProductService, IListarProdutoService listarProductsService
-                            , IBuscarProdutoService buscarProductsService)
-    {
-        _cadastrarProductService = cadastrarProductService;
-        _deletarProductService = deletarProductService;
-        _listarProductsService = listarProductsService;
-        _buscarProductsService = buscarProductsService;
-    }
+    private readonly ICadastrarProdutoService _cadastrarProductService = cadastrarProductService;
+    private readonly IDeletarProdutoService _deletarProductService = deletarProductService;
+    private readonly IListarProdutoService _listarProductsService = listarProductsService;
+    private readonly IBuscarProdutoService _buscarProductsService = buscarProductsService;
 
     [HttpGet("ListarProdutos")]
     [ProducesResponseType(typeof(List<ResponseProduct>), StatusCodes.Status200OK)]
