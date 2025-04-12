@@ -91,3 +91,14 @@ fabric.properties
 /ProductClient.Exceptions/bin/
 obj/Infrastructure.EntityFrameworkCore.targets
 obj/ProductCliente.API.EntityFrameworkCore.targets
+.vs/ProductClient/CopilotIndices/17.13.431.34963/CodeChunks.db
+.vs/ProductClient/CopilotIndices/17.13.431.34963/SemanticSymbols.db
+.vs/ProductClient/DesignTimeBuild/.dtbcache.v2
+.vs/ProductClient/FileContentIndex/6e88d3d6-7ed3-48fe-a922-6bc475c66c8f.vsidx
+.vs/ProductClient/v17/.futdcache.v2
+.vs/ProductClient/v17/.suo
+.vs/ProductClient/v17/DocumentLayout.json
+.vs/ProjectEvaluation/productclient.metadata.v9.bin
+.vs/ProjectEvaluation/productclient.projects.v9.bin
+.vs/ProjectEvaluation/productclient.strings.v9.bin
+ProductClient.API/ProductClient.API.csproj.user
