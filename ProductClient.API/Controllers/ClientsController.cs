@@ -23,21 +23,21 @@ public class ClientsController(ICadastrarClienteService cadastrarClientService, 
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarClientes()
     {
-        return Ok(await _listarClientsService.Executar());
+        return Ok(await _listarClientsService.Execute());
     }
 
     [HttpGet("ListarClientePorId/{Id}")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetClientById(long Id)
     {
-        return Ok(await _buscarClientsService.Executar(Id));
+        return Ok(await _buscarClientsService.Execute(Id));
     }
 
     [HttpPost("CadastrarCliente")]
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
     public async Task<IActionResult> CadastrarCliente([FromBody] RequestClient client)
     {
-        var result = await _cadastrarClientService.Executar(client);
+        var result = await _cadastrarClientService.Execute(client);
         return Created(string.Empty, result);
     }
 
@@ -45,7 +45,7 @@ public class ClientsController(ICadastrarClienteService cadastrarClientService, 
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> AtualizarCliente([FromBody] RequestAtualizarClient client, long Id)
     {
-        await _atualizarClientsService.Executar(client, Id);
+        await _atualizarClientsService.Execute(client, Id);
         return Ok("Cliente atualizado com sucesso.");
     }
 
@@ -53,7 +53,7 @@ public class ClientsController(ICadastrarClienteService cadastrarClientService, 
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DeletarCliente([FromRoute] long Id)
     {
-        await _deletarClientService.Executar(Id);
+        await _deletarClientService.Execute(Id);
         return Ok("Cliente deletado com sucesso.");
     }
 }

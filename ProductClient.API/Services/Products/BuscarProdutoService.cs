@@ -7,14 +7,14 @@ namespace ProductClient.API.Services.Products;
 
 public interface IBuscarProdutoService
 {
-    Task<ResponseProduct> Executar(long id);
+    Task<ResponseProduct> Execute(long id);
 }
 
 class BuscarProdutoService(IProductRepository ProductsRepository) : IBuscarProdutoService
 {
     private readonly IProductRepository _ProductsRepository = ProductsRepository;
 
-    public async Task<ResponseProduct> Executar(long id)
+    public async Task<ResponseProduct> Execute(long id)
     {
         if(!await _ProductsRepository.ProducteExiste(id))
         {

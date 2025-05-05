@@ -5,14 +5,14 @@ namespace ProductClient.API.Services.Products;
 
 public interface IDeletarProdutoService
 {
-    Task Executar(long id);
+    Task Execute(long id);
 }
 
 class DeletarProdutoService(IProductRepository ProductRepository) : IDeletarProdutoService
 {
     private readonly IProductRepository _ProductRepository = ProductRepository;
 
-    public async Task Executar(long id)
+    public async Task Execute(long id)
     {
         if (!await _ProductRepository.ProducteExiste(id)) throw new NotFoundException("Produto não encontrado.");
 

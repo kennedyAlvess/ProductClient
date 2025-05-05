@@ -1,4 +1,3 @@
-using Microsoft.IdentityModel.Tokens;
 using ProductClient.API.Infrastructure.Repository;
 using ProductClient.Communication.ResponseDTO;
 using ProductClient.Exceptions.ExceptionsBase;
@@ -7,13 +6,13 @@ namespace ProductClient.API.Services.ClientProducts;
 
 public interface IListarClientProductsService
 {
-    Task<List<ResponseClientProducts>> Executar(long Id);
+    Task<List<ResponseClientProducts>> Execute(long Id);
 }
 
 public class ListarClientProductsService(IClientProductsRepository clientProductsRepository) : IListarClientProductsService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
-    public async Task<List<ResponseClientProducts>> Executar(long Id)
+    public async Task<List<ResponseClientProducts>> Execute(long Id)
     {
         var result = await _clientProductsRepository.GetClientsProducts(Id);
         

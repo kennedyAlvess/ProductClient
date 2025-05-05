@@ -7,7 +7,7 @@ namespace ProductClient.API.Services.ClientProducts;
 
 public interface IDevolverProdutosService
 {
-    Task Executar(RequestClientProducts request, long Id);
+    Task Execute(RequestClientProducts request, long Id);
 }
 
 public class DevolverProdutosService(IClientProductsRepository clientProductsRepository, IProductRepository productRepository) : IDevolverProdutosService
@@ -15,7 +15,7 @@ public class DevolverProdutosService(IClientProductsRepository clientProductsRep
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
     private readonly IProductRepository _productRepository = productRepository;
 
-    public async Task Executar(RequestClientProducts request, long Id)
+    public async Task Execute(RequestClientProducts request, long Id)
     {
         var clientProduct = await _clientProductsRepository.GetClientProduct(Id) ?? throw new NotFoundException("Venda não encontrada.");
         var produto = await _productRepository.GetProductById(clientProduct.ProductId);

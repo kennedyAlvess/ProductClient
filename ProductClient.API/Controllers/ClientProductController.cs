@@ -20,14 +20,14 @@ public class ClientProductController(IListarClientProductsService listarClientPr
     [ProducesResponseType(typeof(List<ResponseClientProducts>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarClientsProduc([FromRoute] long ClienteId)
     {
-        return Ok(await _listarClientProducts.Executar(ClienteId));
+        return Ok(await _listarClientProducts.Execute(ClienteId));
     }
 
     [HttpPost("CadastrarClienteVenda")]
     [ProducesResponseType(typeof(ResponseClientProducts), StatusCodes.Status201Created)]
     public async Task<IActionResult> CadastrarClienteVenda([FromBody] RequestClientProducts model)
     {
-        await _inserirClienteProdutosService.Executar(model);
+        await _inserirClienteProdutosService.Execute(model);
         return Created(string.Empty, "Venda cadastrada com sucesso.");
     }
 
@@ -35,7 +35,7 @@ public class ClientProductController(IListarClientProductsService listarClientPr
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DevolverProduto([FromBody] RequestClientProducts model, [FromRoute] long Id)
     {
-        await _devolverProdutos.Executar(model, Id);
+        await _devolverProdutos.Execute(model, Id);
         return Ok("Produto devolvido com sucesso.");
     }
 
@@ -43,7 +43,7 @@ public class ClientProductController(IListarClientProductsService listarClientPr
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DevolverVenda(long Id)
     {
-        await _devolverVenda.Executar(Id);
+        await _devolverVenda.Execute(Id);
         return Ok("Venda devolvida com sucesso.");
     }
 }

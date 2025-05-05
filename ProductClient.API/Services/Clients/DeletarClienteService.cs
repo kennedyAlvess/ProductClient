@@ -5,14 +5,14 @@ namespace ProductClient.API.Services.Clients;
 
 public interface IDeletarClienteService
 {
-    Task Executar(long id);
+    Task Execute(long id);
 }
 
 class DeletarClienteService(IClientRepository clientRepository) : IDeletarClienteService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task Executar(long id)
+    public async Task Execute(long id)
     {
         if (!await _clientRepository.ClienteExiste(id)) throw new NotFoundException("Cliente não encontrado.");
 

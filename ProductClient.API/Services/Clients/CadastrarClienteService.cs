@@ -8,14 +8,14 @@ namespace ProductClient.API.Services.Clients;
 
 public interface ICadastrarClienteService
 {
-    Task<ResponseClient> Executar(RequestClient client);
+    Task<ResponseClient> Execute(RequestClient client);
 }
 
 class CadastrarClienteService(IClientRepository clientRepository) : ICadastrarClienteService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task<ResponseClient> Executar(RequestClient client)
+    public async Task<ResponseClient> Execute(RequestClient client)
     {
         Validator<RequestClient>.ExecuteValidation(client);
 

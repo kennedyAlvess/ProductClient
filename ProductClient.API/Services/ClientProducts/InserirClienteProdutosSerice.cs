@@ -7,7 +7,7 @@ namespace ProductClient.API.Services.ClientProducts;
 
 public interface IInserirClienteProdutosService
 {
-    Task Executar(RequestClientProducts request);
+    Task Execute(RequestClientProducts request);
 }
 
 class InserirClienteProdutosService(IClientProductsRepository clientProductsRepository, IClientRepository clientRepository, 
@@ -17,7 +17,7 @@ class InserirClienteProdutosService(IClientProductsRepository clientProductsRepo
     private readonly IClientRepository _clientRepository = clientRepository;
     private readonly IProductRepository _productRepository = productRepository;
 
-    public async Task Executar(RequestClientProducts request)
+    public async Task Execute(RequestClientProducts request)
     {
         var client = await _clientRepository.ClienteExiste(request.ClientId);
         var produto = await _productRepository.GetProductById(request.ProductId);

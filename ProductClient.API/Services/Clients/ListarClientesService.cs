@@ -6,13 +6,13 @@ namespace ProductClient.API.Services.Clients;
 
 public interface IListarClientesService
 {
-    Task<List<ResponseClient>> Executar();
+    Task<List<ResponseClient>> Execute();
 }
 class ListarClientesService(IClientRepository clientRepository) : IListarClientesService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task<List<ResponseClient>> Executar()
+    public async Task<List<ResponseClient>> Execute()
     {
         return [.. (await _clientRepository.GetAllClients()).Select(ConvertEntity.ToClientResponse)];
     }

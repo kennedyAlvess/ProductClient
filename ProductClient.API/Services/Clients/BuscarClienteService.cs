@@ -7,14 +7,14 @@ namespace ProductClient.API.Services.Clients;
 
 public interface IBuscarClienteService
 {
-    Task<ResponseClient> Executar(long id);
+    Task<ResponseClient> Execute(long id);
 }
 
 class BuscarClienteService(IClientRepository clientRepository) : IBuscarClienteService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task<ResponseClient> Executar(long id)
+    public async Task<ResponseClient> Execute(long id)
     {
         if(!await _clientRepository.ClienteExiste(id))
         {

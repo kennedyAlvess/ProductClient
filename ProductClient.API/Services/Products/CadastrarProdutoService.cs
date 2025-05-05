@@ -7,14 +7,14 @@ namespace ProductClient.API.Services.Products;
 
 public interface ICadastrarProdutoService
 {
-    Task<ResponseProduct> Executar(RequestProduct client);
+    Task<ResponseProduct> Execute(RequestProduct client);
 }
 
 class CadastrarProdutoService(IProductRepository productRepository) : ICadastrarProdutoService
 {
     private readonly IProductRepository _productRepository = productRepository;
 
-    public async Task<ResponseProduct> Executar(RequestProduct client)
+    public async Task<ResponseProduct> Execute(RequestProduct client)
     {
         var entity = ConvertDTO.ToProduct(client);
 

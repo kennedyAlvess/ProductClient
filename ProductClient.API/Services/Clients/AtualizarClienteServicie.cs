@@ -8,13 +8,13 @@ namespace ProductClient.API.Services.Clients;
 
 public interface IAtualizarClienteServicie
 {
-    Task Executar(RequestAtualizarClient client, long Id);   
+    Task Execute(RequestAtualizarClient client, long Id);   
 }
 class AtualizarClienteServicie(IClientRepository clientRepository) : IAtualizarClienteServicie
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
-    public async Task Executar(RequestAtualizarClient client, long Id)
+    public async Task Execute(RequestAtualizarClient client, long Id)
     {
 
         if (!await _clientRepository.ClienteExiste(Id))

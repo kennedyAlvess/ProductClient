@@ -23,21 +23,21 @@ public class ProductController(ICadastrarProdutoService cadastrarProductService,
     [ProducesResponseType(typeof(List<ResponseProduct>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarProductes()
     {
-        return Ok(await _listarProductsService.Executar());
+        return Ok(await _listarProductsService.Execute());
     }
 
     [HttpGet("ListarProdutoPorId/{Id}")]
     [ProducesResponseType(typeof(List<ResponseProduct>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetProductById(long Id)
     {
-        return Ok(await _buscarProductsService.Executar(Id));
+        return Ok(await _buscarProductsService.Execute(Id));
     }
 
     [HttpPost("CadastrarProduto")]
     [ProducesResponseType(typeof(ResponseProduct), StatusCodes.Status201Created)]
     public async Task<IActionResult> CadastrarProducte([FromBody] RequestProduct Product)
     {
-        var result = await _cadastrarProductService.Executar(Product);
+        var result = await _cadastrarProductService.Execute(Product);
         return Created(string.Empty, result);
     }
 
@@ -45,7 +45,7 @@ public class ProductController(ICadastrarProdutoService cadastrarProductService,
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> DeletarProducte([FromRoute] long Id)
     {
-        await _deletarProductService.Executar(Id);
+        await _deletarProductService.Execute(Id);
         return Ok("Produto deletado com sucesso.");
     }
 }
