@@ -5,12 +5,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.Clients;
 
-public interface IBuscarClienteService
+public interface IGetClientService
 {
     Task<ResponseClient> Execute(long id);
 }
 
-class BuscarClienteService(IClientRepository clientRepository) : IBuscarClienteService
+class BuscarClienteService(IClientRepository clientRepository) : IGetClientService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

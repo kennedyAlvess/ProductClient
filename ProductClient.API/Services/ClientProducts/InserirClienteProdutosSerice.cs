@@ -5,13 +5,13 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.ClientProducts;
 
-public interface IInserirClienteProdutosService
+public interface IInsertClientProductService
 {
     Task Execute(RequestClientProducts request);
 }
 
-class InserirClienteProdutosService(IClientProductsRepository clientProductsRepository, IClientRepository clientRepository, 
-                                    IProductRepository productRepository) : IInserirClienteProdutosService
+class insertClientProductService(IClientProductsRepository clientProductsRepository, IClientRepository clientRepository, 
+                                    IProductRepository productRepository) : IInsertClientProductService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
     private readonly IClientRepository _clientRepository = clientRepository;

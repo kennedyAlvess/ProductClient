@@ -11,7 +11,6 @@ public static class ConvertEntity
     {
         return new ResponseClient
         {
-            Id = client.Id,
             Nome = client.Nome,
             Email = Mascaras.MascaraEmail(client.Email),
             DataNascimento = client.DataNascimento,

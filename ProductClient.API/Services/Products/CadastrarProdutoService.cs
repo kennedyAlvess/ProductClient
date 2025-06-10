@@ -5,12 +5,12 @@ using ProductClient.Communication.ResponseDTO;
 
 namespace ProductClient.API.Services.Products;
 
-public interface ICadastrarProdutoService
+public interface IRegisterProductService
 {
     Task<ResponseProduct> Execute(RequestProduct client);
 }
 
-class CadastrarProdutoService(IProductRepository productRepository) : ICadastrarProdutoService
+class RegisterProductService(IProductRepository productRepository) : IRegisterProductService
 {
     private readonly IProductRepository _productRepository = productRepository;
 

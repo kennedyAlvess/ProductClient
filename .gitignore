@@ -102,3 +102,6 @@ obj/ProductCliente.API.EntityFrameworkCore.targets
 .vs/ProjectEvaluation/productclient.projects.v9.bin
 .vs/ProjectEvaluation/productclient.strings.v9.bin
 ProductClient.API/ProductClient.API.csproj.user
+/.vs
+/ProductClient.API/appsettings.Development.json
+/ProductClient.API/appsettings.json

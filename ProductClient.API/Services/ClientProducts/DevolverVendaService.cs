@@ -4,12 +4,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 namespace ProductClient.API.Services.ClientProducts;
 
 
-public interface IDevolverVendaService
+public interface IRefundSalesOrderService
 {
     Task Execute(long Id);
 }
 
-public class DevolverVendaService(IClientProductsRepository clientProductsRepository) : IDevolverVendaService
+public class refundSalesOrderServiceService(IClientProductsRepository clientProductsRepository) : IRefundSalesOrderService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
 

@@ -6,11 +6,11 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.Clients;
 
-public interface IAtualizarClienteServicie
+public interface IUpdateClientServicie
 {
     Task Execute(RequestAtualizarClient client, long Id);   
 }
-class AtualizarClienteServicie(IClientRepository clientRepository) : IAtualizarClienteServicie
+class UpdateClientServicie(IClientRepository clientRepository) : IUpdateClientServicie
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 

@@ -3,9 +3,11 @@ using ProductClient.API.Filters;
 using ProductClient.API.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
-builder.Services.AddInfrastructure();
-builder.Services.AddApplicationModules();
+
+builder.Services.AddInfrastructure()
+                .AddApplicationModules()
+                .AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

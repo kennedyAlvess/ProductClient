@@ -15,23 +15,23 @@ public static class ApplicationModules
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         //Cliente
-        services.AddScoped<IAtualizarClienteServicie, AtualizarClienteServicie>();
-        services.AddScoped<IBuscarClienteService, BuscarClienteService>();
-        services.AddScoped<ICadastrarClienteService, CadastrarClienteService>();
-        services.AddScoped<IDeletarClienteService, DeletarClienteService>();
-        services.AddScoped<IListarClientesService, ListarClientesService>();
+        services.AddScoped<IUpdateClientServicie, UpdateClientServicie>();
+        services.AddScoped<IGetClientService, BuscarClienteService>();
+        services.AddScoped<IRegisterClientService, RegisterClientService>();
+        services.AddScoped<IDeleteClientService, DeleteClientService>();
+        services.AddScoped<IListAllClientsService, ListAllClientsService>();
         
         //ClientProducts
-        services.AddScoped<IDevolverProdutosService, DevolverProdutosService>();
-        services.AddScoped<IInserirClienteProdutosService, InserirClienteProdutosService>();
-        services.AddScoped<IListarClientProductsService, ListarClientProductsService>();
-        services.AddScoped<IDevolverVendaService, DevolverVendaService>();
+        services.AddScoped<IRefundProductService, refundProductService>();
+        services.AddScoped<IInsertClientProductService, insertClientProductService>();
+        services.AddScoped<IListClientSalesOrderService, ListClientSalesOrderService>();
+        services.AddScoped<IRefundSalesOrderService, refundSalesOrderServiceService>();
 
         //Produto
-        services.AddScoped<IBuscarProdutoService, BuscarProdutoService>();
-        services.AddScoped<ICadastrarProdutoService, CadastrarProdutoService>();
-        services.AddScoped<IDeletarProdutoService, DeletarProdutoService>();
-        services.AddScoped<IListarProdutoService, ListarProdutoService>();
+        services.AddScoped<IGetProductService, BuscarProdutoService>();
+        services.AddScoped<IRegisterProductService, RegisterProductService>();
+        services.AddScoped<IDeleteProductService, DeleteProductService>();
+        services.AddScoped<IListProductService, ListProductservice>();
 
         return services;
     }

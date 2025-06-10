@@ -4,12 +4,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.ClientProducts;
 
-public interface IListarClientProductsService
+public interface IListClientSalesOrderService
 {
     Task<List<ResponseClientProducts>> Execute(long Id);
 }
 
-public class ListarClientProductsService(IClientProductsRepository clientProductsRepository) : IListarClientProductsService
+public class ListClientSalesOrderService(IClientProductsRepository clientProductsRepository) : IListClientSalesOrderService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
     public async Task<List<ResponseClientProducts>> Execute(long Id)

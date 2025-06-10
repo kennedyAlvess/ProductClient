@@ -5,12 +5,12 @@ using ProductClient.API.Infrastructure.Repository;
 
 namespace ProductClient.API.Services.Products;
 
-public interface IBuscarProdutoService
+public interface IGetProductService
 {
     Task<ResponseProduct> Execute(long id);
 }
 
-class BuscarProdutoService(IProductRepository ProductsRepository) : IBuscarProdutoService
+class BuscarProdutoService(IProductRepository ProductsRepository) : IGetProductService
 {
     private readonly IProductRepository _ProductsRepository = ProductsRepository;
 

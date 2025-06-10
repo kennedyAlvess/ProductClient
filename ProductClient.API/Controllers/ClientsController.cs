@@ -3,57 +3,55 @@ using ProductClient.API.Services.Clients;
 using ProductClient.Communication.RequestsDTO;
 using ProductClient.Communication.ResponseDTO;
 
-// ReSharper disable All
-
 namespace ProductClient.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class ClientsController(ICadastrarClienteService cadastrarClientService, IDeletarClienteService deletarClientService, IListarClientesService listarClientsService
-                            , IBuscarClienteService buscarClientsService, IAtualizarClienteServicie atualizarClientsService) : ControllerBase
+public class ClientController(IRegisterClientService registerClientService, IDeleteClientService deleteClientService, IListAllClientsService ListAllClientsService
+                            , IGetClientService getClientService, IUpdateClientServicie atualizarClientsService) : ControllerBase
 {
-    private readonly ICadastrarClienteService _cadastrarClientService = cadastrarClientService;
-    private readonly IDeletarClienteService _deletarClientService = deletarClientService;
-    private readonly IListarClientesService _listarClientsService = listarClientsService;
-    private readonly IBuscarClienteService _buscarClientsService = buscarClientsService;
-    private readonly IAtualizarClienteServicie _atualizarClientsService = atualizarClientsService;
+    private readonly IRegisterClientService _registerClientService = registerClientService;
+    private readonly IDeleteClientService _deleteClientService = deleteClientService;
+    private readonly IListAllClientsService _ListAllClientsService = ListAllClientsService;
+    private readonly IGetClientService _getClientService = getClientService;
+    private readonly IUpdateClientServicie _updateClientService = atualizarClientsService;
 
-    [HttpGet("ListarClientes")]
+    [HttpGet("ListAllClients")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListarClientes()
+    public async Task<IActionResult> ListAllClients()
     {
-        return Ok(await _listarClientsService.Execute());
+        return Ok(await _ListAllClientsService.Execute());
     }
 
-    [HttpGet("ListarClientePorId/{Id}")]
+    [HttpGet("GetClientById/{Id}")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetClientById(long Id)
     {
-        return Ok(await _buscarClientsService.Execute(Id));
+        return Ok(await _getClientService.Execute(Id));
     }
 
-    [HttpPost("CadastrarCliente")]
+    [HttpPost("RegisterClient")]
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
-    public async Task<IActionResult> CadastrarCliente([FromBody] RequestClient client)
+    public async Task<IActionResult> RegisterClient([FromBody] RequestClient client)
     {
-        var result = await _cadastrarClientService.Execute(client);
+        var result = await _registerClientService.Execute(client);
         return Created(string.Empty, result);
     }
 
-    [HttpPatch("AtualizarCliente/{Id}")]
+    [HttpPatch("UpdateClient/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AtualizarCliente([FromBody] RequestAtualizarClient client, long Id)
+    public async Task<IActionResult> UpdateClient([FromBody] RequestAtualizarClient client, long Id)
     {
-        await _atualizarClientsService.Execute(client, Id);
+        await _updateClientService.Execute(client, Id);
         return Ok("Cliente atualizado com sucesso.");
     }
 
-    [HttpDelete("DeletarCliente/{Id}")]
+    [HttpDelete("DeleteClient/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DeletarCliente([FromRoute] long Id)
+    public async Task<IActionResult> DeleteClient([FromRoute] long Id)
     {
-        await _deletarClientService.Execute(Id);
+        await _deleteClientService.Execute(Id);
         return Ok("Cliente deletado com sucesso.");
     }
 }

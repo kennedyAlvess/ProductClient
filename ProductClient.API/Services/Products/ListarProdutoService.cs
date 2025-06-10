@@ -4,11 +4,11 @@ using ProductClient.API.Infrastructure.Repository;
 
 namespace ProductClient.API.Services.Products;
 
-public interface IListarProdutoService
+public interface IListProductService
 {
     Task<List<ResponseProduct>> Execute();
 }
-class ListarProdutoService(IProductRepository ProductRepository) : IListarProdutoService
+class ListProductservice(IProductRepository ProductRepository) : IListProductService
 {
     private readonly IProductRepository _ProductRepository = ProductRepository;
 

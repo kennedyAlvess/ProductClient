@@ -8,42 +8,42 @@ namespace ProductClient.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-public class ClientProductController(IListarClientProductsService listarClientProducts, IInserirClienteProdutosService inserirClienteProdutosService, 
-                                    IDevolverProdutosService devolverProdutos, IDevolverVendaService devolverVenda) : ControllerBase
+public class ClientProductController(IListClientSalesOrderService listClientSalesOrder, IInsertClientProductService insertClientProductService, 
+                                    IRefundProductService refundProduct, IRefundSalesOrderService refundSalesOrderService) : ControllerBase
 {
-    private readonly IListarClientProductsService _listarClientProducts = listarClientProducts;
-    private readonly IInserirClienteProdutosService _inserirClienteProdutosService = inserirClienteProdutosService;
-    private readonly IDevolverProdutosService _devolverProdutos = devolverProdutos;
-    private readonly IDevolverVendaService _devolverVenda = devolverVenda;
+    private readonly IListClientSalesOrderService _ListClientSalesOrder = listClientSalesOrder;
+    private readonly IInsertClientProductService _insertClientProductService = insertClientProductService;
+    private readonly IRefundProductService _refundProduct = refundProduct;
+    private readonly IRefundSalesOrderService _refundSalesOrderService = refundSalesOrderService;
 
-    [HttpGet("ListarProdutosPorCliente/{ClienteId}")]
+    [HttpGet("ListClientSalesOrder/{ClienteId}")]
     [ProducesResponseType(typeof(List<ResponseClientProducts>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> ListarClientsProduc([FromRoute] long ClienteId)
+    public async Task<IActionResult> ListClientSalesOrder([FromRoute] long ClienteId)
     {
-        return Ok(await _listarClientProducts.Execute(ClienteId));
+        return Ok(await _ListClientSalesOrder.Execute(ClienteId));
     }
 
-    [HttpPost("CadastrarClienteVenda")]
+    [HttpPost("RegisterClientSalesOrder")]
     [ProducesResponseType(typeof(ResponseClientProducts), StatusCodes.Status201Created)]
-    public async Task<IActionResult> CadastrarClienteVenda([FromBody] RequestClientProducts model)
+    public async Task<IActionResult> RegisterClientSalesOrder([FromBody] RequestClientProducts model)
     {
-        await _inserirClienteProdutosService.Execute(model);
+        await _insertClientProductService.Execute(model);
         return Created(string.Empty, "Venda cadastrada com sucesso.");
     }
 
-    [HttpPut("DevolverProduto/{Id}")]
+    [HttpPut("RefundProduct/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DevolverProduto([FromBody] RequestClientProducts model, [FromRoute] long Id)
+    public async Task<IActionResult> RefundProduct([FromBody] RequestClientProducts model, [FromRoute] long Id)
     {
-        await _devolverProdutos.Execute(model, Id);
+        await _refundProduct.Execute(model, Id);
         return Ok("Produto devolvido com sucesso.");
     }
 
-    [HttpDelete("DevolverVenda/{Id}")]
+    [HttpDelete("refundSalesOrderService/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> DevolverVenda(long Id)
+    public async Task<IActionResult> RefundSalesOrderService(long Id)
     {
-        await _devolverVenda.Execute(Id);
+        await _refundSalesOrderService.Execute(Id);
         return Ok("Venda devolvida com sucesso.");
     }
 }

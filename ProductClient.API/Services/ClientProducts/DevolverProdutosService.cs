@@ -5,12 +5,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.ClientProducts;
 
-public interface IDevolverProdutosService
+public interface IRefundProductService
 {
     Task Execute(RequestClientProducts request, long Id);
 }
 
-public class DevolverProdutosService(IClientProductsRepository clientProductsRepository, IProductRepository productRepository) : IDevolverProdutosService
+public class refundProductService(IClientProductsRepository clientProductsRepository, IProductRepository productRepository) : IRefundProductService
 {
     private readonly IClientProductsRepository _clientProductsRepository = clientProductsRepository;
     private readonly IProductRepository _productRepository = productRepository;

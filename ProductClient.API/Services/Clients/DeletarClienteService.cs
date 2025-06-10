@@ -3,12 +3,12 @@ using ProductClient.Exceptions.ExceptionsBase;
 
 namespace ProductClient.API.Services.Clients;
 
-public interface IDeletarClienteService
+public interface IDeleteClientService
 {
     Task Execute(long id);
 }
 
-class DeletarClienteService(IClientRepository clientRepository) : IDeletarClienteService
+class DeleteClientService(IClientRepository clientRepository) : IDeleteClientService
 {
     private readonly IClientRepository _clientRepository = clientRepository;
 
