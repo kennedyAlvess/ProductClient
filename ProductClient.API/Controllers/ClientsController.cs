@@ -21,7 +21,8 @@ public class ClientController(IRegisterClientService registerClientService, IDel
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListAllClients()
     {
-        return Ok(await _ListAllClientsService.Execute());
+        List<ResponseClient> data = await _ListAllClientsService.Execute();
+        return Ok(new ResponseSuccess<List<ResponseClient>>(data));
     }
 
     [HttpGet("GetClientById/{Id}")]
