@@ -22,30 +22,31 @@ public class ClientController(IRegisterClientService registerClientService, IDel
     public async Task<IActionResult> ListAllClients()
     {
         List<ResponseClient> data = await _ListAllClientsService.Execute();
-        return Ok(new ResponseSuccess<List<ResponseClient>>(data));
+        return Ok(new Response<List<ResponseClient>>(data, true));
     }
 
     [HttpGet("GetClientById/{Id}")]
     [ProducesResponseType(typeof(List<ResponseClient>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetClientById(long Id)
     {
-        return Ok(await _getClientService.Execute(Id));
+        ResponseClient data = await _getClientService.Execute(Id);
+        return Ok(new Response<ResponseClient>(data, true));
     }
 
     [HttpPost("RegisterClient")]
     [ProducesResponseType(typeof(ResponseClient), StatusCodes.Status201Created)]
     public async Task<IActionResult> RegisterClient([FromBody] RequestClient client)
     {
-        var result = await _registerClientService.Execute(client);
-        return Created(string.Empty, result);
+        var data = await _registerClientService.Execute(client);
+        return Created(string.Empty, new Response<ResponseClient>(data, true));
     }
 
     [HttpPatch("UpdateClient/{Id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> UpdateClient([FromBody] RequestAtualizarClient client, long Id)
     {
-        await _updateClientService.Execute(client, Id);
-        return Ok("Cliente atualizado com sucesso.");
+        ResponseClient data = await _updateClientService.Execute(client, Id);
+        return Ok(new Response<ResponseClient>(data, true));
     }
 
     [HttpDelete("DeleteClient/{Id}")]
@@ -53,7 +54,7 @@ public class ClientController(IRegisterClientService registerClientService, IDel
     public async Task<IActionResult> DeleteClient([FromRoute] long Id)
     {
         await _deleteClientService.Execute(Id);
-        return Ok("Cliente deletado com sucesso.");
+        return Ok();
     }
 }
 

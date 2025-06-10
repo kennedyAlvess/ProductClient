@@ -11,7 +11,7 @@ public class ExceptionsFilter : IExceptionFilter
     {
         if (context.Exception is ExceptionBase exception)
         {
-            context.Result = new ObjectResult(exception.GetErrorsMessages());
+            context.Result = new ObjectResult( new Response<List<string>>(exception.GetErrorsMessages()));
             context.HttpContext.Response.StatusCode = (int)exception.GetStatusCode();
 
         }
